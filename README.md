@@ -43,7 +43,7 @@ Goal: runnable React + FastAPI app where users upload docs, docs are parsed + in
 
 1. Project bootstrap
 
-Create repository and branches (main, dev, mvp) * done *
+Create repository and branches (main, dev, mvp) *\done*
 
 Acceptance: git repo initialized, branches created *done*
 
@@ -61,9 +61,9 @@ Acceptance: folders present, README placeholder *done*
 
  Create main.py + app creation *done*
 
-Add FastAPI() instance, root health route /
+Add FastAPI() instance, root health route / **will do after db done**
 
-Acceptance: uvicorn app.main:app --reload returns 200 on /
+Acceptance: uvicorn app.main:app --reload returns 200 on / 
 
 Quick test: curl http://localhost:8000/
 
@@ -73,7 +73,7 @@ Acceptance: browser can call API from http://localhost:3000 without CORS errors
 
  Add structured logger app/core/logger.py
 
-Acceptance: logs printed for requests
+Acceptance: logs printed for requests *done*
 
 3. API routes & modular routers
 
