@@ -10,6 +10,7 @@ from app.core.exception_handler import (
 )
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.exceptions import RequestValidationError
+from app.controllers import document_routes, chat_routes
 
 logger = setup_logger()
 
@@ -32,6 +33,8 @@ app.add_exception_handler(StarletteHTTPException, http_exception_handler)
 app.add_exception_handler(RequestValidationError, validation_exception_handler)
 app.add_exception_handler(Exception, generic_exception_handler)
 
+app.include_router(document_routes.router, prefix="/api/docs", tags=["Documents"])
+app.include_router(chat_routes.router, prefix="/api/chat", tags=["Chat"])
 @app.get("/")
 def root():
     logger.info("Root endpoint hit")
