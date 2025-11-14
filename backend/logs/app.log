@@ -77,3 +77,367 @@
 2025-11-14 14:50:44,594 | INFO     | root | logger.py:39 | informant  initialized successfully
 2025-11-14 14:50:51,728 | INFO     | root | logger.py:39 | informant  initialized successfully
 2025-11-14 14:50:58,848 | INFO     | root | logger.py:39 | informant  initialized successfully
+2025-11-14 14:51:06,068 | INFO     | root | logger.py:39 | informant  initialized successfully
+2025-11-14 14:54:00,710 | INFO     | root | logger.py:39 | informant  initialized successfully
+2025-11-14 15:21:25,344 | INFO     | root | text_utils.py:66 | Saved 3 chunks → data\uploads\9c931c6e-18be-4a07-984c-137c50f3800c\GOURANSH.V@KALVIUM.COMMUNITY2.jsonl
+2025-11-14 15:21:28,712 | ERROR    | root | exception_handler.py:46 | Unhandled Exception at /api/docs/upload: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+Traceback (most recent call last):
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\controllers\document_routes.py", line 17, in upload_documents
+    results = process_and_store_docs(files)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\services\document_service.py", line 27, in process_and_store_docs
+    added = add_documents(chunks)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 17, in add_documents
+    db = init_db()
+         ^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 8, in init_db
+    embeddings = get_embedding_model()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\utils\embeddings_utils.py", line 6, in get_embedding_model
+    return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\pydantic\main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\embeddings.py", line 139, in validate_environment
+    self.client = build_generative_service(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\_genai_extension.py", line 360, in build_generative_service
+    return v1betaGenerativeServiceClient(**config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 698, in __init__
+    self._transport = transport_init(
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 105, in __init__
+    credentials, _ = google.auth.default(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\auth\_default.py", line 739, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-11-14 15:21:30,003 | INFO     | root | text_utils.py:66 | Saved 3 chunks → data\uploads\f4fb1bfb-d20d-43f8-9eae-41d30861cd28\GOURANSH.V@KALVIUM.COMMUNITY2.jsonl
+2025-11-14 15:21:32,862 | ERROR    | root | exception_handler.py:46 | Unhandled Exception at /api/docs/upload: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+Traceback (most recent call last):
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\controllers\document_routes.py", line 17, in upload_documents
+    results = process_and_store_docs(files)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\services\document_service.py", line 27, in process_and_store_docs
+    added = add_documents(chunks)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 17, in add_documents
+    db = init_db()
+         ^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 8, in init_db
+    embeddings = get_embedding_model()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\utils\embeddings_utils.py", line 6, in get_embedding_model
+    return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\pydantic\main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\embeddings.py", line 139, in validate_environment
+    self.client = build_generative_service(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\_genai_extension.py", line 360, in build_generative_service
+    return v1betaGenerativeServiceClient(**config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 698, in __init__
+    self._transport = transport_init(
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 105, in __init__
+    credentials, _ = google.auth.default(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\auth\_default.py", line 739, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-11-14 15:22:08,980 | ERROR    | root | exception_handler.py:46 | Unhandled Exception at /api/chat/ask: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+Traceback (most recent call last):
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\controllers\chat_routes.py", line 16, in ask_chat
+    res = get_answer(request.query, request.session_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\services\qa_service.py", line 9, in get_answer
+    docs = query_vector_db(query, k)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 34, in query_vector_db
+    db = init_db()
+         ^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 8, in init_db
+    embeddings = get_embedding_model()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\utils\embeddings_utils.py", line 6, in get_embedding_model
+    return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\pydantic\main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\embeddings.py", line 139, in validate_environment
+    self.client = build_generative_service(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\_genai_extension.py", line 360, in build_generative_service
+    return v1betaGenerativeServiceClient(**config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 698, in __init__
+    self._transport = transport_init(
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 105, in __init__
+    credentials, _ = google.auth.default(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\auth\_default.py", line 739, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-11-14 15:22:11,943 | ERROR    | root | exception_handler.py:46 | Unhandled Exception at /api/chat/ask: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+Traceback (most recent call last):
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\controllers\chat_routes.py", line 16, in ask_chat
+    res = get_answer(request.query, request.session_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\services\qa_service.py", line 9, in get_answer
+    docs = query_vector_db(query, k)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 34, in query_vector_db
+    db = init_db()
+         ^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 8, in init_db
+    embeddings = get_embedding_model()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\utils\embeddings_utils.py", line 6, in get_embedding_model
+    return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\pydantic\main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\embeddings.py", line 139, in validate_environment
+    self.client = build_generative_service(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\_genai_extension.py", line 360, in build_generative_service
+    return v1betaGenerativeServiceClient(**config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 698, in __init__
+    self._transport = transport_init(
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 105, in __init__
+    credentials, _ = google.auth.default(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\auth\_default.py", line 739, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-11-14 15:22:15,149 | ERROR    | root | exception_handler.py:46 | Unhandled Exception at /api/chat/ask: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+Traceback (most recent call last):
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\fastapi\routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\controllers\chat_routes.py", line 16, in ask_chat
+    res = get_answer(request.query, request.session_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\services\qa_service.py", line 9, in get_answer
+    docs = query_vector_db(query, k)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 34, in query_vector_db
+    db = init_db()
+         ^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\db\vector_db.py", line 8, in init_db
+    embeddings = get_embedding_model()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\app\utils\embeddings_utils.py", line 6, in get_embedding_model
+    return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\pydantic\main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\embeddings.py", line 139, in validate_environment
+    self.client = build_generative_service(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\langchain_google_genai\_genai_extension.py", line 360, in build_generative_service
+    return v1betaGenerativeServiceClient(**config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 698, in __init__
+    self._transport = transport_init(
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 105, in __init__
+    credentials, _ = google.auth.default(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish\OneDrive\Desktop\Projects\my_bioTech\backend\venv\Lib\site-packages\google\auth\_default.py", line 739, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
