@@ -1,69 +1,40 @@
-# app/services/document_service.py
-import os
 from pathlib import Path
-from fastapi import UploadFile
+import json
 from app.utils.file_utils import save_uploaded_file
 from app.utils.text_extractors import extract_text_from_file
-
-from app.utils.text_utils import chunk_text
-from app.core.errors import CustomAPIError
+from app.utils.text_utils import clean_text, chunk_text, save_chunks_to_jsonl
+from app.db.vector_db import add_documents
 from app.core.logger import setup_logger
-
-from langchain_community.vectorstores import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from app.core.config import settings
 
 logger = setup_logger()
-UPLOAD_DIR = Path("data/uploads")
-UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-# this func handling file upload, text extraction, chunking, embedding generation, and vector store persistence
-async def process_and_store_docs(files: list[UploadFile]):
 
+def process_and_store_docs(files):
     processed_docs = []
+    for file in files:
+        meta = save_uploaded_file(file, settings.UPLOAD_DIR)
+        file_path = Path(meta["file_path"])
+        text = extract_text_from_file(file_path)
+        text_path = file_path.with_suffix(".txt")
+        with open(text_path, "w", encoding="utf-8") as f:
+            f.write(text)
 
-    try:
-        for file in files:
-            saved_path = save_uploaded_file(file, UPLOAD_DIR)
-            logger.info(f"Saved file: {saved_path}")
+        cleaned_text = clean_text(text)
+        chunks = chunk_text(cleaned_text, source_path=file_path, doc_id=meta["doc_id"])
+        chunks_path = file_path.with_suffix(".jsonl")
+        save_chunks_to_jsonl(chunks, chunks_path)
 
-            text = extract_text_from_file(saved_path)
-            text_file_path = Path(meta["file_path"]).with_suffix(".txt")
-            with open(text_file_path, "w", encoding="utf-8") as f:
-                f.write(text)
-            if not text or len(text.strip()) == 0:
-                raise CustomAPIError(
-                    message=f"No readable content found in {file.filename}",
-                    status_code=422,
-                    error_code="EMPTY_DOCUMENT"
-                )
+        added = add_documents(chunks)
 
-            chunks = chunk_text(text)
-            logger.info(f"Chunked {len(chunks)} sections from {file.filename}")
+        meta.update({
+            "extracted_text_path": str(text_path),
+            "chunks_path": str(chunks_path),
+            "chunk_count": len(chunks),
+            "char_count": len(cleaned_text),
+            "added_to_db": added
+        })
 
-            embeddings = GoogleGenerativeAIEmbeddings(
-                model="models/embedding-001",
-                google_api_key=settings.GEMINI_API_KEY
-            )
+        processed_docs.append(meta)
+        logger.info(f"{meta['file_name']}: {len(chunks)} chunks added to DB")
 
-            vectorstore = Chroma.from_texts(
-                texts=chunks,
-                embedding=embeddings,
-                persist_directory=settings.VECTOR_DB_PATH,
-                metadatas=[{"source": file.filename}] * len(chunks)
-            )
-
-            vectorstore.persist()
-            processed_docs.append({"file": file.filename, "chunks": len(chunks)})
-
-        logger.info(f"processed {len(processed_docs)} document(s) successfully.")
-        return processed_docs
-
-    except CustomAPIError as ce:
-        raise ce
-    except Exception as e:
-        logger.exception(f"Document's processing failed: {e}")
-        raise CustomAPIError(
-            message="error during document processing.",
-            status_code=500,
-            error_code="PROCESSING_FAILED"
-        )
+    return processed_docs
