@@ -1,0 +1,43 @@
+Gouransh vaishnav
+LinkedIn | GitHub | LeetCode|Figma
+Summary
+A results-oriented AI/Fullstack Engineer focused on building robust, AI-powered solutions. My
+focus is on understanding the fundamental trade-offs of technologies to solve real-world problems.
+I am committed to rapid prototyping and the practical engineering required to build, validate, and
+maintain reliable systems, with a strong eagerness to learn and apply Generative AI.
+Technical Skills
+● Programming Languages: Java, JavaScript, Python
+● Backend: Node.js, Express, MySQL, PostgreSQL, MongoDB
+● Frontend: React, HTML, CSS, Tailwind CSS
+● AI & Prototyping: Figma, Google AI Studio, Prompt Engineering, LangChain, Firebase
+Genkit
+● Developer Tools: Git, Postman, Jest, Render, Vercel, Netlify
+Experience
+Freelance QA Intern Collaborative Freelance Team April 2025 – June 2025
+● Worked with a team of freelancers as part of the QA team for a client project.
+● Gained hands-on exposure to fundamentals of Quality Assurance (QA) and Test-Driven
+Development (TDD) practices.
+● Involved in functional testing, bug reporting, and debugging technical issues across the stack.
+Projects
+Google Gen AI Hackathon June 2024
+● Secured a top 5 position for innovative problem-solving using Generative AI.
+● Collaborated with a team to rapidly prototype and develop a functional AI-integrated
+application.
+● Leveraged Prompt Engineering techniques and Google AI Studio to build the prototype.RAG_mini_project: Python, FastAPI, FAISS, Sentence-Transformers, geminiApi Built a
+document retrieval and Q&A system that processes pharma PDFs/DOCX, generates embeddings,
+and answers user queries with cited references using RAG architecture.
+E-commerce Website (GvPcWorld) Technology: React, MongoDB, Node.js, Express, CSS
+● Designed and built a full-stack web application for users to buy and customize PC
+components.
+● Developed a RESTful API using Node.js/Express for robust profile management and
+product handling.
+● Implemented data modeling and DB Schema design for the NoSQL database (MongoDB).
+AI wrapper for this project
+Finding Dora Technology: HTML, CSS, JavaScript
+● Developed a game featuring a score calculation system, timer, and sound effects integration.
+Java OOP Project Technology: Java
+● Applied core object-oriented design principles to solve a complex problem, including data
+modeling for a console-based application.
+Education
+JECRC | Jaipur, Rajasthan B.Tech, Computer Science (Software Product Engineering) Expected
+Graduation: 2027 (In association with Kalvium’s UG program)

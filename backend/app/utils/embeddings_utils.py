@@ -1,12 +1,9 @@
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from app.core.config import settings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 def get_embedding_model():
-    if settings.GEMINI_API_KEY:
-        return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    else:
-        from langchain.embeddings import FakeEmbeddings
-        return FakeEmbeddings(size=768)
+    return HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
 
 def embed_texts(texts):
     model = get_embedding_model()

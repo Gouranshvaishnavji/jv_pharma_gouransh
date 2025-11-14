@@ -1,66 +1,56 @@
-from pathlib import Path
-import json
 import re
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from app.core.logger import setup_logger
+import pdfplumber
+from docx import Document
 
-logger = setup_logger()
+def extract_text_from_file(file_path: str, file_type: str) -> str:
+    if file_type == "pdf":
+        return extract_text_pdf(file_path)
+    elif file_type == "docx":
+        return extract_text_docx(file_path)
+    elif file_type == "txt":
+        return extract_text_txt(file_path)
+    else:
+        return ""
 
+def extract_text_pdf(file_path: str) -> str:
+    text = ""
+    with pdfplumber.open(file_path) as pdf:
+        for page in pdf.pages:
+            text += page.extract_text() or ""
+    return clean_text(text)
+
+def extract_text_docx(file_path: str) -> str:
+    doc = Document(file_path)
+    text = "\n".join([p.text for p in doc.paragraphs])
+    return clean_text(text)
+
+def extract_text_txt(file_path: str) -> str:
+    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+        return clean_text(f.read())
 
 def clean_text(text: str) -> str:
-    """
-    Normalize whitespace, remove control chars and extra newlines.
-    Keeps original order.
-    """
-    if not text:
-        return ""
-    text = re.sub(r"[ \t]+", " ", text)        # collapse spaces/tabs
-    text = re.sub(r"\r\n|\r", "\n", text)      # normalize newlines
-    text = re.sub(r"\n{3,}", "\n\n", text)     # limit consecutive newlines
-    text = re.sub(r"[\x00-\x1F\x7F]", "", text)  # remove control chars
+    text = text.replace("\x00", "")
+    text = re.sub(r"\s+", " ", text)
     return text.strip()
 
+def chunk_text(text: str, source_path: str, chunk_size=1000, overlap=100):
+    chunks = []
+    start = 0
+    chunk_id = 0
 
-def chunk_text(
-    text: str,
-    source_path: Path,
-    doc_id: str,
-    chunk_size: int = 1000,
-    overlap: int = 100,
-) -> list[dict]:
-    """
-    Split text into overlapping chunks with metadata.
-    """
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=chunk_size,
-        chunk_overlap=overlap,
-        separators=["\n\n", "\n", ".", " ", ""],
-    )
-    chunks = text_splitter.split_text(text)
+    while start < len(text):
+        end = start + chunk_size
+        chunk = text[start:end]
 
-    chunk_metadata = []
-    cursor = 0
-    for i, chunk in enumerate(chunks):
-        start = text.find(chunk, cursor)
-        end = start + len(chunk)
-        cursor = end
-        chunk_metadata.append({
-            "doc_id": doc_id,
-            "chunk_id": f"{doc_id}_{i}",
-            "start_char": start,
-            "end_char": end,
-            "source_path": str(source_path),
+        chunks.append({
+            "chunk_id": chunk_id,
+            "source_path": source_path,
             "text": chunk,
+            "start": start,
+            "end": end
         })
-    return chunk_metadata
 
+        chunk_id += 1
+        start = end - overlap
 
-def save_chunks_to_jsonl(chunks: list[dict], output_path: Path):
-    """
-    Save chunks list to a JSONL file.
-    """
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as f:
-        for chunk in chunks:
-            f.write(json.dumps(chunk, ensure_ascii=False) + "\n")
-    logger.info(f"Saved {len(chunks)} chunks → {output_path}")
+    return chunks
